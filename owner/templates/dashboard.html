@@ -1,0 +1,32 @@
+{%extends 'base.html'%}
+
+{%block body_block%}
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+        <div class="card">
+            <h5 class="card-header">Featured</h5>
+            <div class="card-body mp-3">
+                <table class="table">
+                    <tr>
+                        <th>Item Name</th>
+                        <th>User</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                   {%for order in order%}
+                    <tr>
+                        <td>{{order.item.book_name}}</td>
+                        <td>{{order.user}}</td>
+                        <td>{{order.date}}</td>
+                        <td><a href="{%url 'fulldetails' order.id%}" class="btn btn-warning">View</a></td>
+                        <td><a href="{%url 'details' order.id%}" class="btn btn-primary">Process</a></td>
+                    </tr>
+                   {%endfor%}
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-2"></div>
+</div>
+{%endblock%}

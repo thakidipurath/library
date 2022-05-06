@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+
+{%block body_block%}
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <div class="card" style="width: 18rem;">
+            {% if book.images %}
+            <img src="{{book.images.url}}" class="card-img-top" alt="no image">
+            {%endif%}
+            <div class="card-body">
+                <h5 class="card-title">{{book.book_name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{book.author}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">{{book.price}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">{{book.copies}}</h6>
+                <p class="card-text">the books details</p>
+                <div class="mp-3">
+                    <input type="submit" value="changebook" class="btn btn-warning">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

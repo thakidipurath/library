@@ -1,0 +1,39 @@
+{%extends 'index.html'%}
+{%block body_block%}
+<h1>welcome-{{request.user}}</h1>
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4"></div>
+    <div class="col-4">
+        <form action="">
+            {{filter.form.as_p}}
+            <input type="submit">
+        </form>
+    </div>
+</div>
+
+<div class="row">
+
+    {%for item in filter.qs%}
+    <div class="col-4 mb-3">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                {% if item.images %}
+                <img src="{{item.images.url}}" class="card-img-top" alt="no image" height="200">
+                {%endif%}
+                <h5 class="card-title">{{item.book_name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{item.author}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">{{item.price}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">{{item.copies}}</h6>
+                <p class="card-text">the books details</p>
+                <a href="{%url 'addtocart' item.id%}" class="btn btn-primary">Cart</a>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    {%endfor%}
+</div>
+{%endblock%}

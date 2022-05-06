@@ -1,0 +1,39 @@
+{%extends 'index.html'%}
+{%block body_block%}
+
+{%for cart in order%}
+<div class="row">
+    <div class="col-4 mb-3">
+        <img src="{{cart.item.images.url}}" alt="" height="250" width="100%">
+    </div>
+    <div class="col-4">
+        <div class="card-body">
+            <h5 class="card-title">Book name: {{cart.item.book_name}}</h5>
+            <h5 class="card-title">Author: {{cart.item.author}}</h5>
+            <h5 class="card-title">Avalable: {{cart.item.copies}}</h5>
+            <h5 class="card-title">Date: {{cart.date}}</h5>
+
+        </div>
+    </div>
+    <div class="col-4 mt-3">
+        <h5 class="card-title">Price: {{cart.item.price}}</h5>
+        {%if cart.expected_delivery_date%}
+        Expected Delivery Date: {{cart.expected_delivery_date}}
+        {%endif%}
+        <a href="{%url 'cancelled' cart.id%}" class="btn btn-danger">Cancell Order</a>
+        {{cart.status}}
+    </div>
+</div>
+{%endfor%}
+<hr>
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4"></div>
+    <div class="col-4">
+        <h1>
+            <strong>Subtotal</strong><span>: {{total}}</span>
+        </h1>
+    </div>
+</div>
+
+{%endblock%}
